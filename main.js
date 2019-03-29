@@ -31,9 +31,8 @@ for (let i = 0; i < buttonElements.length; i++) {
             let b = index=>buttonElements[Trio[index]-1].innerHTML;
             let pb = index=>buttonElements[Trio[index]-1];
             if(b(0) == b(1) && b(1) == b(2) && b(0) != '' && b(1) != '' && b(2) != ''){
-                    trio = [pb(0),pb(1),pb(2)]
-                    trio.forEach(box=>box.style.background = 'lime')
-                    isWon = true;
+                [pb(0),pb(1),pb(2)].forEach(box=>box.className = 'btn btn-success')
+                isWon = true;
             }
         })
         element.clicked = true
