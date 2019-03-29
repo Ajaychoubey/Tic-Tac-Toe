@@ -14,28 +14,22 @@ for(let i = 1;i <= 9;i++){
 };
 board.appendChild(clearBoard);
 let buttonElements = document.getElementsByTagName('button');
-clearBoard.onclick = ()=>{
-    location.reload();
-}
-let possibleTrios = [
-    [1,2,3],[4,5,6],[7,8,9],[3,6,9],[1,5,9],[3,5,7],[1,4,7],[2,5,8],
-]
+clearBoard.onclick = () => location.reload();
+let possibleTrios = [[1,2,3],[4,5,6],[7,8,9],[3,6,9],[1,5,9],[3,5,7],[1,4,7],[2,5,8]];
 for (let i = 0; i < buttonElements.length; i++) {
     const element = buttonElements[i];
     element.onclick = ()=>{
         if(isWon) return;
-        let trio;
         element.innerHTML = chance;
         chance = chance == 'X' ? 'O' : 'X';
         possibleTrios.forEach(Trio=>{
             let b = index=>buttonElements[Trio[index]-1].innerHTML;
             let pb = index=>buttonElements[Trio[index]-1];
             if(b(0) == b(1) && b(1) == b(2) && b(0) != '' && b(1) != '' && b(2) != ''){
-                [pb(0),pb(1),pb(2)].forEach(box=>box.className = 'btn btn-success')
-                isWon = true;
+                    [pb(0),pb(1),pb(2)].forEach(box=>box.className = 'btn btn-success')
+                    isWon = true;
             }
         })
-        element.clicked = true
         element.onclick = ()=>{};
     }
 }
